@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.qiao.multitouch.ListviewCheckBoxActivity">
+   <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/bt_selectAll"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全选"/>
+        <Button
+            android:id="@+id/bt_cancel"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消隐藏"/>
+        <Button
+            android:id="@+id/bt_noseselectAll"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全不选"/>
+    </LinearLayout>
+
+    <com.example.qiao.multitouch.Customlistview
+        android:id="@+id/lv"
+        android:layout_margin="25dp"
+        android:layout_width="match_parent"
+        android:layout_height="700dp">
+    </com.example.qiao.multitouch.Customlistview>
+</LinearLayout>
+
+</ScrollView>

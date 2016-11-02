@@ -1,13 +1,12 @@
 package com.example.qiao.multitouch;
-
 import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener{
     private ImageView iv;
     private Matrix matrix = new Matrix();
@@ -22,12 +21,23 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private PointF midPoint = new PointF();
     // 初始的两个手指按下的触摸点的距离
     private float oriDis = 1f;
+    private float angle;
+    private float mangle;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        iv = (ImageView) findViewById(R.id.iv_tu);
+        iv=(ImageView) findViewById(R.id.iv_tu);
         iv.setOnTouchListener(this);
+         /*
+        * 获取屏幕宽高
+        * */
+        DisplayMetrics dm=new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width=dm.widthPixels;
+        int height=dm.heightPixels;
     }
 
     @Override
@@ -45,6 +55,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             case MotionEvent.ACTION_POINTER_DOWN:
                 // 第二个手指按下事件
                 oriDis = distance(event);
+                angle = getAngle(event);
                 if (oriDis > 10f) {
                     savedMatrix.set(matrix);
                     midPoint = middle(event);
@@ -63,14 +74,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     matrix.set(savedMatrix);
                     matrix.postTranslate(event.getX() - startPoint.x, event.getY()
                             - startPoint.y);
+                    mangle = getAngle(event)-angle;
+                    matrix.postRotate(mangle,event.getX()-startPoint.x,event.getY()-startPoint.y);
                 } else if (mode == ZOOM) {
                     // 两个手指滑动
                     float newDist = distance(event);
                     if (newDist > 10f) {
                         matrix.set(savedMatrix);
                         float scale = newDist / oriDis;
-                        matrix.postScale(scale, scale, midPoint.x, midPoint.y);
+                        matrix.postScale(scale, scale,midPoint.x, midPoint.y);
+
+
                     }
+
                 }
                 break;
         }
@@ -83,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private float distance(MotionEvent event) {
         float x = event.getX(0) - event.getX(1);
         float y = event.getY(0) - event.getY(1);
-        //return FloatMath.sqrt(x * x + y * y);
         return (float)Math.sqrt(x * x + y * y);
     }
 
@@ -92,5 +107,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         float x = event.getX(0) + event.getX(1);
         float y = event.getY(0) + event.getY(1);
         return new PointF(x / 2, y / 2);
+    }
+    //获得旋转角
+    public float getAngle(MotionEvent event)
+    {
+        float x = event.getX(0) - event.getX(1);
+        float y = event.getY(0) - event.getY(1);
+        return (float)Math.atan2(x,y);
     }
 }
