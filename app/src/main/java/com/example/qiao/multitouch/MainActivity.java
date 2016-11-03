@@ -83,10 +83,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                         matrix.set(savedMatrix);
                         float scale = newDist / oriDis;
                         matrix.postScale(scale, scale,midPoint.x, midPoint.y);
-
-
                     }
-
                 }
                 break;
         }

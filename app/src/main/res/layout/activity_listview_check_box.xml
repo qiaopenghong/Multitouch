@@ -36,8 +36,12 @@
         android:id="@+id/lv"
         android:layout_margin="25dp"
         android:layout_width="match_parent"
-        android:layout_height="700dp">
+        android:layout_height="400dp">
     </com.example.qiao.multitouch.Customlistview>
+       <TextView
+           android:id="@+id/tv_show"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content" />
 </LinearLayout>
 
 </ScrollView>

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class ListviewCheckBoxActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -15,6 +16,7 @@ public class ListviewCheckBoxActivity extends AppCompatActivity implements View.
     private Customlistview lv;
     private MyAdapter adapter;
     private int checkNum; // 记录选中的条目数量
+    private TextView tv_show;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,7 @@ public class ListviewCheckBoxActivity extends AppCompatActivity implements View.
         bt_selectAll = (Button) findViewById(R.id.bt_selectAll);
         bt_cancel = (Button) findViewById(R.id.bt_cancel);
         bt_noseselectAll = (Button) findViewById(R.id.bt_noseselectAll);
+        tv_show =(TextView) findViewById(R.id.tv_show);
         bt_selectAll.setOnClickListener(this);
         bt_cancel.setOnClickListener(this);
         bt_noseselectAll.setOnClickListener(this);
@@ -33,11 +36,13 @@ public class ListviewCheckBoxActivity extends AppCompatActivity implements View.
         adapter = new MyAdapter(getApplicationContext(),data);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            private MyAdapter.ViewHolder viewholder;
+
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // 取得ViewHolder对象，这样就省去了通过层层的findViewById去实例化我们需要的cb实例的步骤
-
-                MyAdapter.ViewHolder viewholder = (MyAdapter.ViewHolder) view.getTag();
+                viewholder = (MyAdapter.ViewHolder)view.getTag();
                 // 改变CheckBox的状态
                 viewholder.cb.toggle();
                 // 将CheckBox的选中状况记录下来
@@ -49,6 +54,7 @@ public class ListviewCheckBoxActivity extends AppCompatActivity implements View.
                 } else {
                     checkNum--;
                 }
+                tv_show.setText("已选择"+checkNum+"项");
             }
         });
 
@@ -95,6 +101,7 @@ public class ListviewCheckBoxActivity extends AppCompatActivity implements View.
     private void dataChanged() {
         // 通知listView刷新
         adapter.notifyDataSetChanged();
+        tv_show.setText("已选择"+checkNum+"项");
     };
 
 

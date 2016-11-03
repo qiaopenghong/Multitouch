@@ -25,9 +25,8 @@ public class MyAdapter extends BaseAdapter {
     private void initData() {
         // TODO Auto-generated method stub
         for (int i = 0; i < data.length; i++) {
-            getIsSelected().put(i, false);
+            getIsSelected().put(i,false);
         }
-
     }
     @Override
     public int getCount() {
@@ -36,11 +35,13 @@ public class MyAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int i) {
+
         return data[i];
     }
 
     @Override
     public long getItemId(int i) {
+
         return i;
     }
 
@@ -58,17 +59,15 @@ public class MyAdapter extends BaseAdapter {
         }
         viewholder.tv_name.setText(data[i]);
         viewholder.cb.setChecked(getIsSelected().get(i));
-
         return view;
     }
-    static class ViewHolder{
+    class ViewHolder{
         TextView tv_name;
         public CheckBox cb;
     }
     public static HashMap<Integer, Boolean> getIsSelected() {
         return isSelected;
     }
-
     public static void setIsSelected(HashMap<Integer,Boolean> isSelected) {
         MyAdapter.isSelected = isSelected;
     }

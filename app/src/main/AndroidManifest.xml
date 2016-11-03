@@ -15,7 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListviewCheckBoxActivity"></activity>
+        <activity android:name=".ListviewCheckBoxActivity" />
+        <activity android:name=".GridActivity"></activity>
     </application>
 
 </manifest>

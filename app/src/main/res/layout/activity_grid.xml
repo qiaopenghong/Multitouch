@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.qiao.multitouch.GridActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ren"/>
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/home_toplog"/>
+    <ImageView
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/search"/>
+ </RelativeLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.example.qiao.multitouch.MyGridView
+                android:id="@+id/grid"
+                android:background="#000"
+                android:padding="1dp"
+                android:horizontalSpacing="3dp"
+                android:verticalSpacing="3dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:numColumns="4"
+               >
+            </com.example.qiao.multitouch.MyGridView>
+            <com.example.qiao.multitouch.MyListView
+                android:id="@+id/lv"
+
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_below="@id/grid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </com.example.qiao.multitouch.MyListView>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</LinearLayout>
