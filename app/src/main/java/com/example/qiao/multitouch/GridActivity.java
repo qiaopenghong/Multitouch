@@ -2,6 +2,7 @@ package com.example.qiao.multitouch;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ScrollView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,9 @@ public class GridActivity extends AppCompatActivity {
         gridView.setAdapter(gadapter);
         MyListAdapter ladapter = new MyListAdapter(GridActivity.this, llist);
         listView.setAdapter(ladapter);
+        ScrollView sl = (ScrollView) findViewById(R.id.sl);
+        sl.scrollTo(0, 0);
+        sl.smoothScrollTo(0, 0);
 
     }
 
@@ -57,11 +61,10 @@ public class GridActivity extends AppCompatActivity {
         glist.add(p11);
 
         llist = new ArrayList<Lperson>();
-       for (int i=0;i<20;i++){
-           Lperson lp=new Lperson(R.drawable.gv4,"呵呵");
-           llist.add(lp);
-       }
-
+        for (int i = 0; i < 20; i++) {
+            Lperson lp = new Lperson(R.drawable.gv4, "呵呵");
+            llist.add(lp);
+        }
 
 
     }

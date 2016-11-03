@@ -2,22 +2,24 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="10dp"
     android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
 
     >
+
     <ImageView
-        android:layout_centerVertical="true"
         android:id="@+id/list_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/gv1"/>
+        android:layout_centerVertical="true"
+        android:src="@drawable/gv1" />
+
     <TextView
         android:id="@+id/list_name"
-        android:textSize="25sp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="dsfsg"/>
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="dsfsg"
+        android:textSize="25sp" />
 </RelativeLayout>

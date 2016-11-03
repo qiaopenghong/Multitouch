@@ -7,7 +7,7 @@ import android.widget.GridView;
 /**
  * Created by qiao on 2016/11/3.
  */
-public class MyGridView extends GridView{
+public class MyGridView extends GridView {
     public MyGridView(Context context) {
         super(context);
     }
